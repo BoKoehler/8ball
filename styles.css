@@ -1,54 +1,46 @@
-/* General reset for mobile compatibility */
-* {
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'MedievalSharp', serif; /* Medieval font */
-    background: #f8e8c3; /* Rich parchment background */
-    color: #4a2b15; /* Darker brown for text */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    text-align: center;
-    padding: 40px;
-    background: rgba(255, 255, 255, 0.85); /* Transparent parchment box */
-    border: 4px solid #8c5c3e;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    font-family: 'UnifrakturMaguntia', cursive;
+    background-color: #f5ecd4; /* Light background color */
+    color: #3e1b0e;
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    color: #3f1f0f;
-    letter-spacing: 2px;
+    font-size: 3rem;
+    color: #6d4c41;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    border: 5px solid #8c5c3e;
+    background-color: rgba(255, 247, 229, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .cabbage-container {
     margin: 30px 0;
-    cursor: pointer;
 }
 
 #elder-cabbage {
-    width: 250px; /* Increased width */
-    height: 250px; /* Increased height */
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 #elder-cabbage:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 .answer {
@@ -58,17 +50,31 @@ h1 {
     min-height: 50px;
     opacity: 0;
     color: #3e1b0e;
-    transition: opacity 0.6s ease-in-out;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
 
-/* Mobile-friendly */
+.answer.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Mobile Styles */
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     #elder-cabbage {
-        width: 180px; /* Scaled down for mobile */
-        height: 180px; /* Scaled down for mobile */
+        width: 180px;
+        height: 180px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .answer {
+        font-size: 1.4rem;
     }
 }

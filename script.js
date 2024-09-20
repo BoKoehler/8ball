@@ -31,22 +31,40 @@ const answers = [
     "Your destiny is intertwined with the harvest.",
     "A bountiful crop awaits you.",
     "The cabbage sways in doubt—wait a moment.",
-    "Yurrr"
 ];
 
-// Add tap/click event listener
-const cabbage = document.getElementById('elder-cabbage');
-const answerDiv = document.getElementById('answer');
+// Function to pick a random answer
+function getRandomAnswer() {
+    const randomIndex = Math.floor(Math.random() * answers.length);
+    return randomIndex;
+}
 
-cabbage.addEventListener('click', () => {
-    const randomAnswer = answers[Math.floor(Math.random() * answers.length)];
-    answerDiv.textContent = randomAnswer;
+// Function to play audio
+function playAudio(index) {
+    if (window.currentAudio) {
+        window.currentAudio.pause();
+        window.currentAudio.currentTime = 0;
+    }
 
-    // Show answer with fade-in effect
-    answerDiv.style.opacity = 1;
+    const audio = new Audio(`./audio/${index + 1}.mp3`);
+    window.currentAudio = audio;
+    audio.play().catch(error => {
+        console.error("Error playing audio:", error);
+    });
+}
 
-    // Reset opacity after a few seconds
-    setTimeout(() => {
-        answerDiv.style.opacity = 0;
-    }, 4000); // Answer fades out after 4 seconds for added suspense
+// Event listener for cabbage click
+document.getElementById('elder-cabbage').addEventListener('click', function () {
+    const answerIndex = getRandomAnswer();
+    const answer = answers[answerIndex];
+    const answerElement = document.querySelector('.answer');
+    
+    // Update the text
+    answerElement.textContent = answer;
+    
+    // Play corresponding voice line
+    playAudio(answerIndex);
+
+    // Show the answer with animation
+    answerElement.classList.add('show');
 });
