@@ -53,18 +53,33 @@ function playAudio(index) {
     });
 }
 
+// Function to show and fade out the answer
+function showAnswer(answer) {
+    const answerElement = document.querySelector('.answer');
+    
+    // Fade out the previous answer if it's visible
+    answerElement.classList.remove('show');
+    
+    setTimeout(() => {
+        // Update the text and show the new answer
+        answerElement.textContent = answer;
+        answerElement.classList.add('show');
+
+        // Fade out after 5 seconds
+        setTimeout(() => {
+            answerElement.classList.remove('show');
+        }, 5000);
+    }, 600); // Small delay to allow the previous answer to fade out
+}
+
 // Event listener for cabbage click
 document.getElementById('elder-cabbage').addEventListener('click', function () {
     const answerIndex = getRandomAnswer();
     const answer = answers[answerIndex];
-    const answerElement = document.querySelector('.answer');
     
-    // Update the text
-    answerElement.textContent = answer;
+    // Show the new answer
+    showAnswer(answer);
     
     // Play corresponding voice line
     playAudio(answerIndex);
-
-    // Show the answer with animation
-    answerElement.classList.add('show');
 });
