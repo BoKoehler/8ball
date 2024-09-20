@@ -30,7 +30,8 @@ const answers = [
     "Proceed with caution, the soil is dry.",
     "Your destiny is intertwined with the harvest.",
     "A bountiful crop awaits you.",
-    "The cabbage sways in doubt—wait a moment."
+    "The cabbage sways in doubt—wait a moment.",
+    "Yurrr"
 ];
 
 // Add tap/click event listener
